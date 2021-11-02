@@ -32,7 +32,7 @@ config :crud, Oban,
          {
            Oban.Plugins.Cron,
            crontab: [
-             {"10 * * * * ", Crud.Jobs.ScheduleInsertion, queue: :insertion_in_db},
+             {"*/10 * * * *", Crud.Jobs.ScheduleInsertion, queue: :insertion_in_db},
            ]
          }
        ],

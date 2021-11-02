@@ -1,0 +1,18 @@
+<h1>Show Room</h1>
+
+<ul>
+
+    <li>
+        <strong>Name:</strong>
+        <%= @user.name %>
+    </li>
+
+    <li>
+        <strong>Description:</strong>
+        <%= @user.description %>
+    </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.page_path(@conn, :edit, @user) %></span>
+<span><%= link "Back", to: Routes.page_path(@conn, :home) %></span>

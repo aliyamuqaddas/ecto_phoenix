@@ -1,0 +1,35 @@
+<h1>Room App</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <%= for user <- @users do  %>
+
+    <tr>
+        <td><%= user.name %></td>
+        <td><%= user.description %></td>
+
+        <td>
+            <span><%= link "Show", to: Routes.user_path(@conn, :show, user) %></span>
+
+        </td>
+
+    </tr>
+
+
+
+    <% end %>
+    </tbody>
+</table>
+
+<span><%= link "New User", to: Routes.user_path(@conn, :new) %></span>
+
+
+

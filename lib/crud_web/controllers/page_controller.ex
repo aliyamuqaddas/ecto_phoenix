@@ -24,11 +24,11 @@ defmodule CrudWeb.PageController do
     IO.inspect("these are the new params")
     IO.inspect(user_params)
     uploaded_files =
-      consume_uploaded_entries(socket, :photo, fn %{path: path}, _entry ->
-        dest = Path.join([:code.priv_dir(:my_app), "static", "uploads", Path.basename(path)])
-        File.cp!(path, dest)
-        Routes.static_path(socket, "/uploads/#{Path.basename(dest)}")
-      end)
+#      consume_uploaded_entries(socket, :photo, fn %{path: path}, _entry ->
+#        dest = Path.join([:code.priv_dir(:my_app), "static", "uploads", Path.basename(path)])
+#        File.cp!(path, dest)
+#        Routes.static_path(socket, "/uploads/#{Path.basename(dest)}")
+#      end)
     IO.inspect("its uploadedd files")
     IO.inspect(uploaded_files)
     case Accounts.create_room(user_params) do

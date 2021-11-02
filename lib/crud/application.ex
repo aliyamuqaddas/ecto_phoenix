@@ -14,11 +14,13 @@ defmodule Crud.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Crud.PubSub},
       # Start the Endpoint (http/https)
-      CrudWeb.Endpoint
+      CrudWeb.Endpoint,
+#       Oban Configs
+      {Oban, oban_config()}
       # Start a worker by calling: Crud.Worker.start_link(arg)
       # {Crud.Worker, arg}
-    ]
 
+    ]
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Crud.Supervisor]
@@ -31,4 +33,8 @@ defmodule Crud.Application do
     CrudWeb.Endpoint.config_change(changed, removed)
     :ok
   end
+
+  defp oban_config do
+     Application.fetch_env!(:crud, Oban)
+   end
 end

@@ -26,6 +26,22 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :crud, Oban,
+       repo: Crud.Repo,
+       plugins: [Oban.Plugins.Pruner,
+         {
+           Oban.Plugins.Cron,
+           crontab: [
+             {"10 * * * * ", Crud.Jobs.ScheduleInsertion, queue: :insertion_in_db},
+           ]
+         }
+       ],
+       queues: [
+         default: 1,
+         insertion_in_db: 1
+       ]
+
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

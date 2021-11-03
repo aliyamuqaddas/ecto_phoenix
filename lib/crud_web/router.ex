@@ -24,6 +24,8 @@ defmodule CrudWeb.Router do
     get "/edit/:id", PageController, :edit
     put "/update/:id", PageController, :update
     delete "/delete/:id", PageController, :delete
+    delete "/enq_del/:id", PageController, :enqueue_del
+
 
 
   end

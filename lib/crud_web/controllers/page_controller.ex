@@ -2,6 +2,7 @@ defmodule CrudWeb.PageController do
   use CrudWeb, :controller
   alias Crud.Accounts
   alias Crud.Accounts.Room
+  alias Crud.Jobs.EnqueueInsertion
 
 
   def index(conn, _params) do
@@ -79,6 +80,11 @@ defmodule CrudWeb.PageController do
     conn
     |> put_flash(:info, "Room deleted successfully.")
     |> redirect(to: Routes.page_path(conn, :home))
+  end
+
+  # Delete that specific record after 10 minutes
+  def enqueue_del(conn, %{"id" => id}) do
+     EnqueueInsertion.enqueue_room(id)
   end
 
 

@@ -3,6 +3,7 @@
 <table>
     <thead>
     <tr>
+        <th>Room ID</th>
         <th>Name</th>
         <th>Description</th>
         <th>Photo</th>
@@ -14,6 +15,7 @@
     <%= for user <- @users do  %>
 
     <tr>
+        <td><%= user.id %></td>
         <td><%= user.name %></td>
         <td><%= user.description %></td>
         <td><%= user.photo %></td>
@@ -21,6 +23,8 @@
             <span><%= link "Show", to: Routes.page_path(@conn, :show, user) %></span>
             <span><%= link "Edit", to: Routes.page_path(@conn, :edit, user) %></span>
             <span><%= link "Delete", to: Routes.page_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %></span>
+            <span><%= link "Enqueue_Delete", to: Routes.page_path(@conn, :enqueue_del, user), method: :delete, data: [confirm: "Room will be deleted in a few seconds"] %></span>
+
 
 
         </td>

@@ -6,13 +6,12 @@ defmodule Crud.Jobs.ScheduleInsertion do
   alias Crud.Repo
   alias Crud.Accounts.Room
 
+
   @impl Oban.Worker
   def perform(%Oban.Job{}) do
+    IO.inspect("working fine")
     #Insert Record in Rooms Table in Database
-    record = %Room{name: "alia", description: "i am a girl.", photo: "its me.."}
-    Repo.insert!(record)
-    IO.inspect("inserted!")
-
+    Repo.insert(Room.changeset(%Room{}, %{name: "alia", description: "i am a girl.", photo: "its me.."}))
   end
 
 

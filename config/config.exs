@@ -32,13 +32,14 @@ config :crud, Oban,
          {
            Oban.Plugins.Cron,
            crontab: [
-             {"*/10 * * * *", Crud.Jobs.ScheduleInsertion, queue: :insertion_in_db},
+             {"*/1 * * * *", Crud.Jobs.ScheduleInsertion, queue: :insertion_in_db},
            ]
          }
        ],
        queues: [
          default: 1,
-         insertion_in_db: 1
+         insertion_in_db: 1,
+         enqueue_insertion_in_db: 1
        ]
 
 

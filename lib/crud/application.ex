@@ -19,7 +19,6 @@ defmodule Crud.Application do
       {Oban, oban_config()}
       # Start a worker by calling: Crud.Worker.start_link(arg)
       # {Crud.Worker, arg}
-
     ]
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
